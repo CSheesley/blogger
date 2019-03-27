@@ -7,16 +7,16 @@ RSpec.describe Article, type: :feature do
 
         visit articles_path
 
-        click_link "Create New Article"
-
+        click_link "Create a New Article"
+        # save_and_open_page
         expect(current_path).to eq(new_article_path)
+        fill_in "article[title]", with: "A New Article"
+        fill_in "article[body]", with: "Newly created body text"
+        click_on "Create Article"
 
-        fill_in 'article[title]', with: "A New Article"
-        fill_in 'article[body]', with: "Newly created body text"
-        click_link "Create Article"
+        article = Article.last
 
-        expect(current_path).to eq(articles_path)
-
+        expect(current_path).to eq(article_path(article))
         expect(page).to have_content("A New Article")
         expect(page).to have_content("Newly created body text")
       end
