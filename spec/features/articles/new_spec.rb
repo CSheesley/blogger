@@ -8,7 +8,7 @@ RSpec.describe Article, type: :feature do
         visit articles_path
 
         click_link "Create a New Article"
-        # save_and_open_page
+
         expect(current_path).to eq(new_article_path)
         fill_in "article[title]", with: "A New Article"
         fill_in "article[body]", with: "Newly created body text"

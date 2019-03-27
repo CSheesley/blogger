@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.create(article_params)
-    # binding.pry
     redirect_to article_path(@article)
   end
 
