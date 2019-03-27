@@ -16,7 +16,7 @@ RSpec.describe Article, type: :feature do
         expect(page).to have_content(article.body)
       end
 
-    context 'when I click on the delete button'  
+    context 'when I click on the delete button'
       it 'should return me to the home page where this books info no longer exists' do
 
         article_1 = Article.create(title: "Test Article", body: "Hopefulyy this works!")
