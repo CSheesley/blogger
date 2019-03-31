@@ -42,16 +42,16 @@ RSpec.describe Article, type: :feature do
 
         click_on "Edit"
 
-        expect(current_path).to eq(edit_article(article))
+        expect(current_path).to eq(edit_article_path(article))
         fill_in "article[title]", with: "An Updated Title"
         fill_in "article[body]", with: "An updated body of text"
 
-        click_on "Update"
+        click_on "Update Article"
+
         expect(current_path).to eq(article_path(article))
-        expect(article.title).to eq("An Updated Title")
-        expect(article.title).to eq("An updated body of text")
-        expect(page).to have_content(article.title)
-        expect(page).to have_content(article.body)
+
+        expect(page).to have_content("An Updated Title")
+        expect(page).to have_content("An updated body of text")
       end
     end
   end
