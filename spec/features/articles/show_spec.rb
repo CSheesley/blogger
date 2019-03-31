@@ -5,7 +5,7 @@ RSpec.describe Article, type: :feature do
     context "when I visit and article show page" do
       it 'displays the information of that article' do
 
-        article = Article.create(title: "Test Article", body: "Hopefulyy this works!")
+        article = Article.create(title: "Test Article", body: "Hopefully this works!")
 
         visit articles_path
 
@@ -27,8 +27,9 @@ RSpec.describe Article, type: :feature do
 
         click_on "Delete"
 
+        expect(page).to have_content("Article 'Test Article' Deleted!")
+
         expect(current_path).to eq(articles_path)
-        expect(page).not_to have_content(article_1.title)
         expect(page).to have_content(article_2.title)
       end
     end
@@ -47,6 +48,8 @@ RSpec.describe Article, type: :feature do
         fill_in "article[body]", with: "An updated body of text"
 
         click_on "Update Article"
+
+        expect(page).to have_content("Article 'An Updated Title' Updated!")
 
         expect(current_path).to eq(article_path(article))
 

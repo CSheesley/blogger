@@ -14,6 +14,8 @@ RSpec.describe Article, type: :feature do
         fill_in "article[body]", with: "Newly created body text"
         click_on "Create Article"
 
+        expect(page).to have_content("Article 'A New Article' Created!")
+
         article = Article.last
 
         expect(current_path).to eq(article_path(article))
