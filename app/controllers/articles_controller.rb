@@ -33,8 +33,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
     # Article.destroy(params[:id])
+    @article.destroy
     redirect_to articles_path
   end
 
