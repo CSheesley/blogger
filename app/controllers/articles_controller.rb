@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # before_action :set_article, only: [:show, :edit, :destroy, :update]
+  before_action :set_article, only: [:show, :edit, :destroy, :update]
 
   def index
     @articles = Article.all
@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     #dry up with set_article
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def new
@@ -21,21 +21,20 @@ class ArticlesController < ApplicationController
 
   def edit
     #dry up with set_article
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def update
     #dry up with set_article
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
     @article.update(article_params)
-    binding.pry
 
     redirect_to article_path(@article)
   end
 
   def destroy
-    # @article.destroy
-    Article.destroy(params[:id])
+    @article.destroy
+    # Article.destroy(params[:id])
     redirect_to articles_path
   end
 
@@ -45,7 +44,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :body)
   end
 
-  # def set_article
-  #   @article = Article.find(params[:id])
-  # end
+  def set_article
+    @article = Article.find(params[:id])
+  end
 end
